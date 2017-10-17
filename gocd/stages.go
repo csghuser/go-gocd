@@ -13,4 +13,5 @@ type Stage struct {
 	EnvironmentVariables  []*EnvironmentVariable `json:"environment_variables,omitempty"`
 	Resources             []string               `json:"resource,omitempty"`
 	Jobs                  []*Job                 `json:"jobs,omitempty"`
+	Result		      string                 `json:"result,omitempty"`
 }
