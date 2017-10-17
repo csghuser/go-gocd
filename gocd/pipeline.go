@@ -166,19 +166,6 @@ func (pgs *PipelinesService) GetInstance(ctx context.Context, name string, offse
 	return &pt, resp, err
 }
 
-// GetInstance of a pipeline run.
-func (pgs *PipelinesService) GetLatestInstance(ctx context.Context, name string) (*PipelineInstance, *APIResponse, error) {
-	stub := pgs.buildStub("pipelines/%s/instance", name)
-
-	pt := PipelineInstance{}
-	_, resp, err := pgs.client.getAction(ctx, &APIClientRequest{
-		Path:         stub,
-		ResponseBody: &pt,
-	})
-
-	return &pt, resp, err
-}
-
 // GetHistory returns a list of pipeline instances describing the pipeline history.
 func (pgs *PipelinesService) GetHistory(ctx context.Context, name string, offset int) (*PipelineHistory, *APIResponse, error) {
 	stub := pgs.buildPaginatedStub("pipelines/%s/history", name, offset)
@@ -208,14 +195,6 @@ func (pgs *PipelinesService) buildPaginatedStub(format string, name string, offs
 	stub := fmt.Sprintf(format, name)
 	if offset > 0 {
 		stub = fmt.Sprintf("%s/%d", stub, offset)
-	}
-	return stub
-}
-
-func (pgs *PipelinesService) buildStub(format string, name string) string {
-	stub := fmt.Sprintf(format, name)
-	if offset > 0 {
-		stub = fmt.Sprintf("%s/%d", stub)
 	}
 	return stub
 }
