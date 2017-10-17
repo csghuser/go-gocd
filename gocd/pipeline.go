@@ -77,6 +77,7 @@ type MaterialFilter struct {
 // PipelineHistory describes the history of runs for a pipeline
 type PipelineHistory struct {
 	Pipelines []*PipelineInstance `json:"pipelines"`
+	Pagination *PaginationResponse `json:"pagination,omitempty"`
 }
 
 // PipelineInstance describes a single pipeline run
