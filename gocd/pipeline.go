@@ -154,7 +154,7 @@ func (pgs *PipelinesService) ReleaseLock(ctx context.Context, name string) (bool
 
 // GetInstance of a pipeline run.
 func (pgs *PipelinesService) GetInstance(ctx context.Context, name string, offset int) (*PipelineInstance, *APIResponse, error) {
-	stub := pgs.buildPaginatedStub("admin/pipelines/%s/instance", name, offset)
+	stub := pgs.buildPaginatedStub("pipelines/%s/instance", name, offset)
 
 	pt := PipelineInstance{}
 	_, resp, err := pgs.client.getAction(ctx, &APIClientRequest{
