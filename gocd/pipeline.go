@@ -87,6 +87,7 @@ type PipelineInstance struct {
 	NaturalOrder int        `json:"natural_order"`
 	Comment      string     `json:"comment"`
 	Stages       []*Stage   `json:"stages"`
+	Counter	     int        `json:"counter"`
 }
 
 // BuildCause describes the triggers which caused the build to start.
